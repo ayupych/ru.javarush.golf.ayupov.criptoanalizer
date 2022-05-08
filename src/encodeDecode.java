@@ -1,7 +1,4 @@
-import java.io.FileReader;
-import java.nio.file.Path;
-
-public class main {
+public class encodeDecode {
     public static final char[] ALPHABET = {'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О',
             'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё',
             'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э',
@@ -10,7 +7,6 @@ public class main {
     public static void main(String[] args) {
         encode("Привет", 1);
         decode("Рсйгёу", 1);
-
     }
 
     public static void encode(String message, int key) {
@@ -21,11 +17,15 @@ public class main {
             for (int j = 0; j < ALPHABET.length; j++) {
                 if (message1[i] == ALPHABET[j]) {
                     result[i] = ALPHABET[((ALPHABET.length) + j + key) % ALPHABET.length];
+                } else {
+                    result[i] = message1[i];
                 }
             }
         }
-        System.out.println(result);
+            System.out.println(result);
+        //return String.valueOf(result);
     }
+
 
     public static void decode(String message, int key) {
         char[] message1 = message.toCharArray();
@@ -35,11 +35,15 @@ public class main {
             for (int j = 0; j < ALPHABET.length; j++) {
                 if (message1[i] == ALPHABET[j]) {
                     result[i] = ALPHABET[((ALPHABET.length) + j - key) % ALPHABET.length];
+                } else {
+                    result[i] = message1[i];
                 }
             }
         }
         System.out.println(result);
     }
 }
+
+
 
 
